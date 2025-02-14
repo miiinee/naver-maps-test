@@ -46,7 +46,7 @@ app.get('/directions', async (req, res) => {
 app.get('/pfm-period', async (req, res) => {
     console.log("Express 앱에 '/pfm-period' 요청이 들어왔습니다.");
 
-    let { from, to } = req.query;
+    let { from, to, serviceTp } = req.query;
     const serviceKey = DATA_SERVICE_KEY;
 
     try {
@@ -55,7 +55,7 @@ app.get('/pfm-period', async (req, res) => {
 
         // 공공 DATA API 호출
         const response = await axios.get(url, {
-            params: { serviceKey, from, to },
+            params: { serviceKey, from, to, serviceTp },
         });
         console.log("Response status:", response.status);
         console.log("Response data: ", response.data);
